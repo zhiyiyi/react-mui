@@ -1,10 +1,10 @@
 ## Tic-Tac-Toe
 
-A Tic-Tac-Toe following React official tutorial
+A Tic-Tac-Toe following React official tutorial.
 
 ### To play the game
 
-Download the code
+Download the code.
 
 In the project directory, you can run:
 
