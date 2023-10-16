@@ -1,28 +1,42 @@
 import './App.css';
-import App2 from './App2.js'
-import App3 from './App3.js'
-import App4 from './App4.js'
-import { Button, Typography } from '@mui/material';
-import { styled } from "@mui/material/styles";
+import { useState } from 'react';
 
-function App() {
+const products = [
+  { title: 'Cabbage', isFruit: false, id: 1},
+  { title: 'Garlic', isFruit: false, id: 2 },
+  { title: 'Apple', isFruit: true, id: 3 }
+];
 
-  const MyCustomButton = styled(Button)({
-    padding: 10
-  })
+function MyButton({ count, onClick}) {
   
   return (
+    <button onClick={onClick}>
+      Clicked {count} times
+    </button>
+  )
+}
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  const listItems = products.map(product => 
+    <li
+    key={product.id}
+    style={{color: product.isFruit ? 'magenta' : 'darkgreen'}}>
+      {product.title}
+    </li>
+    )
+
+  return (
     <div className="App">
-      <Typography variant='myVariant'>You are the best</Typography>
-      <Typography sx={{color: 'myCustomColor.superDark'}}>You are so loved</Typography>
-      <Button sx={{ m:2}} color='secondary' variant='contained'>Zhiyi</Button>
-      <MyCustomButton variant='contained'>Hello Button</MyCustomButton>
-      <App2 />
-      <App3 />
-      <App4 />
+      <ul>{listItems}</ul>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
     </div>
 
   );
 }
-
-export default App;
